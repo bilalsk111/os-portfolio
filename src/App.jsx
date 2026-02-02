@@ -9,12 +9,12 @@ import Cli from "./components/window/Cli"
 import { useState } from "react"
 
 function App() {
-  const [windowsState, setWindowsState] = useState({
-    github: { open: false, minimized: false, maximized: false },
-    note: { open: false, minimized: false, maximized: false },
-    resume: { open: false, minimized: false, maximized: false },
-    spotify: { open: false, minimized: false, maximized: false },
-    cli: { open: false, minimized: false, maximized: false },
+ const [windowsState, setWindowsState] = useState({
+    github: { open: false, minimized: false, maximized: false, z: 1 },
+    note: { open: false, minimized: false, maximized: false, z: 1 },
+    resume: { open: false, minimized: false, maximized: false, z: 1 },
+    spotify: { open: false, minimized: false, maximized: false, z: 1 },
+    cli: { open: false, minimized: false, maximized: false, z: 1 },
   })
 
   return (

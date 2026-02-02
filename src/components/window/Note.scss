@@ -1,18 +1,14 @@
 .note-window {
-  padding: 2.5rem;
-  background-color: #0a0a0a; // GitHub Dark Deep
+  background-color: #0a0a0a; 
   color: #c9d1d9;
   font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.7;
-  max-width: 900px;
   margin: 0 auto;
-  min-height: 500px;
-  border-radius: 0 0 8px 8px; // Assuming Window.js has the top rounded
+  border-radius: 0 0 8px 8px; 
   selection: { background: #388bfd; color: #fff; }
 
-  // Markdown Elements
   h1, h2, h3 {
-    color: #58a6ff; // Soft Blue Neon
+    color: #58a6ff; 
     margin-top: 2rem;
     font-weight: 600;
     border-bottom: 1px solid #30363d;
@@ -23,7 +19,7 @@
   p {
     margin-bottom: 1.5rem;
     font-size: 1.1rem;
-    color: #8b949e; // Slightly dimmed text for readability
+    color: #8b949e; 
   }
 
   strong {
@@ -31,7 +27,6 @@
     font-weight: 600;
   }
 
-  // Code Blocks (The "Dev" Look)
   pre {
     background: #161b22;
     padding: 1.2rem;
@@ -49,7 +44,6 @@
     }
   }
 
-  // Inline code
   code {
     background: rgba(110, 118, 129, 0.4);
     padding: 0.2rem 0.4rem;
@@ -58,14 +52,12 @@
     color: #ff7b72; // Coral accent
   }
 
-  // Links
   a {
     color: #58a6ff;
     text-decoration: none;
     &:hover { text-decoration: underline; }
   }
 
-  // Lists
   ul, ol {
     padding-left: 2rem;
     color: #8b949e;

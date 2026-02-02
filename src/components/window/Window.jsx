@@ -7,46 +7,51 @@ const Window = ({
   windowName,
   windowsState,
   setWindowsState,
-  width = "40vw",
-  height = "40vh",
 }) => {
-  const state = windowsState[windowName];
+  const state = windowsState[windowName]
+  if (!state.open || state.minimized) return null
 
-  if (!state || !state.open || state.minimized) return null;
+  const bringToFront = () => {
+    setWindowsState(prev => {
+      const maxZ = Math.max(...Object.values(prev).map(w => w.z))
+      return {
+        ...prev,
+        [windowName]: { ...prev[windowName], z: maxZ + 1 }
+      }
+    })
+  }
 
-  const close = () => {
-    setWindowsState((prev) => ({
+  const close = () =>
+    setWindowsState(prev => ({
       ...prev,
-      [windowName]: { ...prev[windowName], open: false, minimized: false },
-    }));
-  };
+      [windowName]: { ...prev[windowName], open: false, minimized: false }
+    }))
 
-  const minimize = () => {
-    setWindowsState((prev) => ({
+  const minimize = () =>
+    setWindowsState(prev => ({
       ...prev,
-      [windowName]: { ...prev[windowName], minimized: true },
-    }));
-  };
+      [windowName]: { ...prev[windowName], minimized: true }
+    }))
 
-  const toggleMaximize = () => {
-    setWindowsState((prev) => ({
+  const toggleMaximize = () =>
+    setWindowsState(prev => ({
       ...prev,
       [windowName]: {
         ...prev[windowName],
-        maximized: !prev[windowName].maximized,
-      },
-    }));
-  };
+        maximized: !prev[windowName].maximized
+      }
+    }))
 
   return (
     <Rnd
-      bounds="parent" 
-      default={{ width, height, x: 200, y: 150 }}
-      size={state.maximized ? { width: "100vw", height: "92vh" } : undefined} 
+      bounds="parent"
+      onMouseDown={bringToFront}
+      size={state.maximized ? { width: "100vw", height: "92vh" } : undefined}
       position={state.maximized ? { x: 0, y: 0 } : undefined}
       disableDragging={state.maximized}
       enableResizing={!state.maximized}
-      style={{ zIndex: state.active ? 100 : 1 }} // Active window upar dikhegi
+      style={{ zIndex: state.z }}
+      default={{ width: "40vw", height: "40vh", x: 200, y: 120 }}
     >
       <div className="window shadow-lg">
         <div className="titlebar" onDoubleClick={toggleMaximize}>

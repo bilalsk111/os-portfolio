@@ -120,8 +120,46 @@ GitHub: https://github.com/bilalsk111
       description: 'Clear terminal',
       usage: 'clear',
       fn: () => ''
-    }
-  }), [])
+    },
+     open: {
+      fn: (name) => {
+        if (!windowsState[name]) return "App not found"
+        setWindowsState(prev => ({
+          ...prev,
+          [name]: { ...prev[name], open: true, minimized: false }
+        }))
+        return `Opened ${name}`
+      }
+    },
+    close: {
+      fn: (name) => {
+        if (!windowsState[name]) return "App not found"
+        setWindowsState(prev => ({
+          ...prev,
+          [name]: { ...prev[name], open: false }
+        }))
+        return `Closed ${name}`
+      }
+    },
+    minimize: {
+      fn: (name) => {
+        if (!windowsState[name]) return "App not found"
+        setWindowsState(prev => ({
+          ...prev,
+          [name]: { ...prev[name], minimized: true }
+        }))
+        return `Minimized ${name}`
+      }
+    },
+    windows: {
+      fn: () =>
+        Object.entries(windowsState)
+          .map(([k, v]) => `${k}: ${v.open ? (v.minimized ? "minimized" : "open") : "closed"}`)
+          .join("\n")
+    },
+    clear: { fn: () => "" }
+
+  }),[windowsState])
 
   const welcomeMessage = `
 bilal@portfolio:~$ init
@@ -133,15 +171,16 @@ Type 'help' to get started.
 `
 
   return (
-    <Window  windowName={windowName}
+    <Window   title="Terminal"
+      windowName={windowName}
       windowsState={windowsState}
       setWindowsState={setWindowsState}>
       <div className="cli-window">
         <Terminal
-          commands={commands}
-          welcomeMessage={welcomeMessage}
-          promptLabel="bilal@portfolio:~$"
-          autoFocus
+            commands={commands}
+        promptLabel="bilal@os:~$"
+        welcomeMessage="Type: open github | windows"
+         autoFocus
           noDefaults
           contentStyle={{ color: '#dcdcdc' }}      // OUTPUT TEXT COLOR
           promptLabelStyle={{ color: '#4fc1ff' }}  // PROMPT COLOR

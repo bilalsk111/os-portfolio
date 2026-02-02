@@ -1,47 +1,78 @@
 .dock {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: flex-end;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 0.5rem 0;
+
+  background: rgba(46, 54, 65, 0.25);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.3);
+
+  .dock-item {
     display: flex;
-    gap: 0.2rem;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    img {
+      width: 3rem;
+      height: 3rem;
+      object-fit: contain;
+      border-radius: 0.5rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      background: #b2c039;
+      border-radius: 50%;
+      margin-top: 4px;
+      opacity: 0.9;
+      transition: transform 0.2s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.15) translateY(-8%);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    &:hover .dot {
+      transform: scale(1.2);
+    }
+  }
+
+  .cli img {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .icon.mail,
+  .icon.link {
+    display: flex;
     justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
 
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    z-index: 100;
-    background-color: rgba(29, 80, 110, 0.252);
-    // padding-inline: 0.6rem;
-    padding-block: 0.52rem;
-
-    backdrop-filter: blur(5px);
-
-    .icon {
-        padding: 0.3rem;
-        
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        aspect-ratio: 1/1;
-        width: 3rem;
-
-        transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-      
-    }
-    .cli {
-        width: 3rem;
-        img{
-            width: 100%;
-            height: 100%;
-        }
-    }
-    .icon:hover {
-        transform: scale(1.1) translateY(-10%);
-          background: #9e767633;
-          border-radius: 0.5rem;
+    img {
+      width: 100%;
+      height: 100%;
     }
 
-    .icon:hover+.icon,
-    .icon:has(+ .icon:hover) {
-        transform: scale(1.05) translateY(-5%);
+    &:hover {
+      transform: scale(1.15) translateY(-8%);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      background: rgba(255, 255, 255, 0.05);
     }
-
+  }
 }

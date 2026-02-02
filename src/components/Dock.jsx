@@ -2,62 +2,51 @@ import "./dock.scss";
 
 const Dock = ({ windowsState, setWindowsState }) => {
   const handleClick = (name) => {
-    setWindowsState((prev) => {
-      const win = prev[name];
+    setWindowsState(prev => {
+      const win = prev[name]
+      const maxZ = Math.max(...Object.values(prev).map(w => w.z))
 
-      if (!win.open) {
-        return {
-          ...prev,
-          [name]: { open: true, minimized: false, maximized: false },
-        };
-      }
+      if (!win.open)
+        return { ...prev, [name]: { ...win, open: true, minimized: false, z: maxZ + 1 } }
 
-      if (win.minimized) {
-        return {
-          ...prev,
-          [name]: { ...win, minimized: false },
-        };
-      }
+      if (win.minimized)
+        return { ...prev, [name]: { ...win, minimized: false, z: maxZ + 1 } }
 
-      return {
-        ...prev,
-        [name]: { ...win, minimized: true },
-      };
-    });
-  };
+      return { ...prev, [name]: { ...win, minimized: true } }
+    })
+  }
+
+const DockIcon = ({ name, icon, className = "icon" }) => (
+  <div className={`dock-item ${className}`} onClick={() => handleClick(name)}>
+    <img src={icon} alt={name} />
+    {windowsState[name]?.open && <span className="dot" />}
+  </div>
+);
 
   return (
     <footer className="dock">
-      <div className="icon github" onClick={() => handleClick("github")}>
-        <img src="/doc-icons/github.svg" />
-      </div>
-      <div className="icon note" onClick={() => handleClick("note")}>
-        <img src="/doc-icons/note.svg" />
-      </div>
-      <div className="icon resume" onClick={() => handleClick("resume")}>
-        <img src="/doc-icons/pdf.svg" />
-      </div>
-      <div className="icon spotify" onClick={() => handleClick("spotify")}>
-        <img src="/doc-icons/spotify.svg" />
-      </div>
-      <div className="icon cli" onClick={() => handleClick("cli")}>
-        <img src="/doc-icons/cli.svg" />
-      </div>{" "}
+      <DockIcon name="github" className='icon'  icon="/doc-icons/github.svg" />
+      <DockIcon name="note" className='icon'   icon="/doc-icons/note.svg" />
+      <DockIcon name="resume" className='icon' icon="/doc-icons/pdf.svg" />
+      <DockIcon name="spotify" className='icon' icon="/doc-icons/spotify.svg" />
+      <DockIcon name="cli" className='icon cli' icon="/doc-icons/cli.svg" />
+
       <div
-        onClick={() => {
-          window.open("mailto:bilalshaikj6@gmail.com", "_blank");
-        }}
+        onClick={() =>
+          window.open("mailto:bilalshaikj6@gmail.com", "_blank")
+        }
         className="icon mail"
       >
         <img src="/doc-icons/mail.svg" alt="" />
       </div>
+
       <div
-        onClick={() => {
+        onClick={() =>
           window.open(
             "https://www.linkedin.com/in/bilal-shaikh-9a1a45279/",
-            "_blank",
-          );
-        }}
+            "_blank"
+          )
+        }
         className="icon link"
       >
         <img src="/doc-icons/link.svg" alt="" />
