@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" id="diary">
+  <rect width="44" height="55.41" x="10" y="4.3" fill="#b7c3af" stroke="#5f363a" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" rx="5"></rect>
+  <path fill="#ced8da" stroke="#5f363a" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15,4.3h4.51a0,0,0,0,1,0,0V59.7a0,0,0,0,1,0,0H15a5,5,0,0,1-5-5V9.3a5,5,0,0,1,5-5Z"></path>
+  <rect width="18" height="10" x="27.76" y="15.85" fill="#fffaf0" stroke="#5f363a" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" rx="1"></rect>
+</svg>

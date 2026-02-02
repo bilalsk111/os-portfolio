@@ -1,0 +1,56 @@
+[
+  {
+    "id": "1",
+    "img": "/projects/project-1.png",
+    "title": "Doze",
+    "desc": "Static HTML project called Doze (likely a landing/site project).",
+    "tags": ["html", "css"],
+    "repolink": "https://github.com/bilalsk111/Doze",
+    "demolink": "https://bilalsk111.github.io/Doze/"
+  },
+  {
+    "id": "2",
+    "img": "/projects/project-2.png",
+    "title": "award-website",
+    "desc": "Award-winning animated website UI built with React/Tailwind/GSAP. A responsive animated site. 📌 Uses React, Tailwind, GSAP for scroll-based animations. ", 
+    "tags": ["react", "tailwindcss", "gsap", "frontend"],
+    "repolink": "https://github.com/bilalsk111/award-website",
+    "demolink": "https://bilalsk111.github.io/award-website/"
+  },
+  {
+    "id": "3",
+    "img": "/projects/project-3.png",
+    "title": "Cotton-Weave",
+    "desc": "Landing page with responsive layout (HTML/CSS).",
+    "tags": ["html", "css", "responsive"],
+    "repolink": "https://github.com/bilalsk111/Cotton-Weave",
+    "demolink": "https://bilalsk111.github.io/Cotton-Weave/"
+  },
+  {
+    "id": "4",
+    "img": "/projects/project-4.png",
+    "title": "StudioArc",
+    "desc": "3D landing page with text animations using HTML, CSS, Three.js, GSAP, ScrollTrigger, and Lenis.",
+    "tags": ["html", "css", "javascript", "three.js", "gsap"],
+    "repolink": "https://github.com/bilalsk111/StudioArc",
+    "demolink": "https://bilalsk111.github.io/StudioArc/"
+  },
+  {
+    "id": "5",
+    "img": "/projects/project-5.png",
+    "title": "obys.agency",
+    "desc": "Clone of Obys Agency responsive homepage using HTML/CSS/JS, locomotive-scroll, GSAP, Three.js.",
+    "tags": ["html", "css", "javascript", "gsap"],
+    "repolink": "https://github.com/bilalsk111/obys.agency",
+    "demolink": "https://bilalsk111.github.io/obys.agency/"
+  },
+  {
+    "id": "6",
+    "img": "/projects/project-6.png",
+    "title": "alvy.clone",
+    "desc": "Clone of ALVY responsive homepage built with HTML and SCSS.",
+    "tags": ["html", "scss", "responsive"],
+    "repolink": "https://github.com/bilalsk111/alvy.clone",
+    "demolink": "https://bilalsk111.github.io/alvy.clone/"
+  }
+]
