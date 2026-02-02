@@ -5,7 +5,9 @@
   overflow: hidden;
   border: 1px solid #1f1f1f;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-
+ &.active{
+  display: none;
+ }
   .titlebar{
     height: 36px;
     display: flex;

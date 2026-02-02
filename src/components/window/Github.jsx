@@ -4,10 +4,14 @@ import Window from "./Window"
 import GitCard from "./GitCard"
 import "./github.scss"
 
-const Github = ({ state, setWindows }) => {
+const Github = ({ windowsState, setWindowsState, windowName }) => {
   return (
-    <Window title="GitHub" state={state}
-      setWindows={setWindows}>
+    <Window
+      title="GitHub"
+      windowName={windowName}
+      windowsState={windowsState}
+      setWindowsState={setWindowsState}
+    >
       <div className="cards">
         {githubData.map(project => (
           <GitCard key={project.id} data={project} />
@@ -16,5 +20,6 @@ const Github = ({ state, setWindows }) => {
     </Window>
   )
 }
+
 
 export default Github

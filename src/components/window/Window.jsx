@@ -1,79 +1,74 @@
-import { Rnd } from "react-rnd"
-import "./window.scss"
+import { Rnd } from "react-rnd";
+import "./window.scss";
 
 const Window = ({
-  id,
   title,
   children,
-  state,
-  setWindows,
+  windowName,
+  windowsState,
+  setWindowsState,
+  width = "40vw",
+  height = "40vh",
 }) => {
-  if (state.minimized) return null
+  const state = windowsState[windowName];
+
+  if (!state || !state.open || state.minimized) return null;
 
   const close = () => {
-    setWindows(prev => ({
+    setWindowsState((prev) => ({
       ...prev,
-      [id]: { ...prev[id], open: false }
-    }))
-  }
+      [windowName]: { ...prev[windowName], open: false, minimized: false },
+    }));
+  };
 
   const minimize = () => {
-    setWindows(prev => ({
+    setWindowsState((prev) => ({
       ...prev,
-      [id]: { ...prev[id], minimized: true }
-    }))
-  }
+      [windowName]: { ...prev[windowName], minimized: true },
+    }));
+  };
 
-  const maximize = () => {
-    setWindows(prev => ({
+  const toggleMaximize = () => {
+    setWindowsState((prev) => ({
       ...prev,
-      [id]: {
-        ...prev[id],
-        maximized: !prev[id].maximized
-      }
-    }))
-  }
+      [windowName]: {
+        ...prev[windowName],
+        maximized: !prev[windowName].maximized,
+      },
+    }));
+  };
 
   return (
     <Rnd
-      size={
-        state.maximized
-          ? { width: "100vw", height: "100vh" }
-          : { width: "42vw", height: "60vh" }
-      }
-      position={
-        state.maximized ? { x: 0, y: 0 } : undefined
-      }
-      minWidth={320}
-      minHeight={200}
-      bounds="window"
-      dragHandleClassName="titlebar"
+      bounds="parent" 
+      default={{ width, height, x: 200, y: 150 }}
+      size={state.maximized ? { width: "100vw", height: "92vh" } : undefined} 
+      position={state.maximized ? { x: 0, y: 0 } : undefined}
       disableDragging={state.maximized}
       enableResizing={!state.maximized}
+      style={{ zIndex: state.active ? 100 : 1 }} // Active window upar dikhegi
     >
-      <div className="window">
-        <div className="titlebar">
+      <div className="window shadow-lg">
+        <div className="titlebar" onDoubleClick={toggleMaximize}>
           <h5>{title}</h5>
-
           <div className="window-controls">
-            <button onClick={minimize}>
+            <button className="icon" onClick={minimize}>
               <i className="ri-subtract-line" />
             </button>
-            <button onClick={maximize}>
+            <button className="icon" onClick={toggleMaximize}>
               <i className="ri-rectangle-line" />
             </button>
-            <button onClick={close}>
+            <button className="icon" onClick={close}>
+              {" "}
               <i className="ri-close-fill" />
             </button>
           </div>
         </div>
 
-        <div className="main-content">
-          {children}
-        </div>
+        <div className="main-content">{children}</div>
       </div>
     </Rnd>
-  )
-}
+  );
+};
 
-export default Window
+export default Window;

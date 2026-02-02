@@ -9,36 +9,41 @@ import Cli from "./components/window/Cli"
 import { useState } from "react"
 
 function App() {
-  const [windows, setWindows] = useState({
-    github: { open: true, minimized: false, maximized: false },
-    note: { open: true, minimized: false, maximized: false },
-    resume: { open: true, minimized: false, maximized: false },
-    spotify: { open: true, minimized: false, maximized: false },
-    cli: { open: true, minimized: false, maximized: false },
+  const [windowsState, setWindowsState] = useState({
+    github: { open: false, minimized: false, maximized: false },
+    note: { open: false, minimized: false, maximized: false },
+    resume: { open: false, minimized: false, maximized: false },
+    spotify: { open: false, minimized: false, maximized: false },
+    cli: { open: false, minimized: false, maximized: false },
   })
 
   return (
     <main className="desktop-root">
       <DateTimeWidget />
-      <Dock windows={windows} setWindows={setWindows} />
+      <Dock windowsState={windowsState} setWindowsState={setWindowsState} />
 
-      {windows.github.open && (
-        <Github state={windows.github} setWindows={setWindows} />
+      {windowsState.github.open && (
+        <Github windowName="github" windowsState={windowsState} setWindowsState={setWindowsState} />
       )}
-      {windows.note.open && (
-        <Note state={windows.note} setWindows={setWindows} />
+
+      {windowsState.note.open && (
+        <Note windowName="note" windowsState={windowsState} setWindowsState={setWindowsState} />
       )}
-      {windows.resume.open && (
-        <Resume state={windows.resume} setWindows={setWindows} />
+
+      {windowsState.resume.open && (
+        <Resume windowName="resume" windowsState={windowsState} setWindowsState={setWindowsState} />
       )}
-      {windows.spotify.open && (
-        <Spotify state={windows.spotify} setWindows={setWindows} />
+
+      {windowsState.spotify.open && (
+        <Spotify windowName="spotify" windowsState={windowsState} setWindowsState={setWindowsState} />
       )}
-      {windows.cli.open && (
-        <Cli state={windows.cli} setWindows={setWindows} />
+
+      {windowsState.cli.open && (
+        <Cli windowName="cli" windowsState={windowsState} setWindowsState={setWindowsState} />
       )}
     </main>
   )
 }
+
 
 export default App

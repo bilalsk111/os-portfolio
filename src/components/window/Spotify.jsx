@@ -2,12 +2,13 @@ import React from "react";
 import Window from "./Window";
 import "./Spotify.scss";
 
-const Spotify = ({ state, setWindows }) => {
+const Spotify = ({ windowsState, setWindowsState, windowName }) => {
   return (
     <Window
       title="Spotify"
-   state={state}
-      setWindows={setWindows} width="25vw"
+ windowName={windowName}
+      windowsState={windowsState}
+      setWindowsState={setWindowsState} width="25vw"
     >
       <div className="spotify-container">
         <iframe

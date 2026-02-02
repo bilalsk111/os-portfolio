@@ -3,7 +3,7 @@ import Window from './Window'
 import Terminal from 'react-console-emulator'
 import './cli.scss'
 
-const Cli = ({ state, setWindows }) => {
+const Cli = ({ windowsState, setWindowsState, windowName }) => {
 
   const commands = useMemo(() => ({
     help: {
@@ -133,8 +133,9 @@ Type 'help' to get started.
 `
 
   return (
-    <Window state={state}
-      setWindows={setWindows}>
+    <Window  windowName={windowName}
+      windowsState={windowsState}
+      setWindowsState={setWindowsState}>
       <div className="cli-window">
         <Terminal
           commands={commands}
